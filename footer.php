@@ -105,7 +105,7 @@
   </div>
 
   <div id="legalBlock" class="right">
-    <?php the_time('Y') ?> YK+Nightlights. All Rights Reserved - <strong>YKFD</strong>
+    <?php echo date('Y') ?> YK+Nightlights. All Rights Reserved - <strong>YKFD</strong>
   </div>
 
 </div>
