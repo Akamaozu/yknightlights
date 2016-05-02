@@ -1,0 +1,153 @@
+.left {
+float: left;
+}
+
+.right {
+float: right;
+}
+
+.center {
+margin: 0 auto;
+}
+
+.clearLeft {
+clear: left;
+}
+
+.clearRight {
+clear: right;
+}
+
+.clearAll {
+clear: both;
+}
+
+
+/* Image Metabox Styling */
+
+.form-field {
+color: #777;
+}
+
+.form-field input[type="radio"] {
+width: auto;
+margin: 0 25% 0 5px; 
+}
+
+.metaboxWrap {
+overflow: hidden;
+}
+
+.metaboxTitle {
+width: 98%;
+font-size: 2.55em;
+font-weight: 900;
+margin: 1em 1% 1em 1%;
+padding-bottom: 10px;
+border-bottom: 1px solid #ccc;
+}
+
+.metaboxTitle p {
+color: #777;
+max-width: 75%;
+margin: 10px 0;
+font-weight: 100;
+font-size: 50%;
+font-family: georgia, serif;
+}
+
+.tlImageControl , .eventDetails{
+max-width: 45%;
+padding: 8px;
+margin: 0 8% 0 1%; 
+}
+
+.tlImageControl div p, .eventDetails div p {
+font-style: italic !important;
+}
+
+.tlImageControl div label, .eventDetails div label {
+font-size: 1.15em;
+font-weight: 900;
+color: #333;
+}
+
+.tlImageControl div, .eventDetails div {
+margin-bottom: 4em;
+}
+
+.metaboxImagePreview {
+width: 201px;
+height: 268px;
+margin-left: 1%;
+border: 2px solid #333;
+}
+
+.metaboxImagePreview span {
+display: block;
+width: 100%;
+}
+
+.metaboxImagePreview span p {
+display: block;
+max-width: 45%;
+float: right;
+font-style: normal;
+font-size: 1.15em !important;
+color: #888;
+background-color: #333; 
+padding: 4px 12px;
+text-align: right;
+}
+
+.metaboxImagePreview span p strong {
+margin-left: 5px;
+color: #ddd;
+}
+
+.form-field.speaker, .form-field.description {
+padding-bottom: 4em;
+border-bottom: 1px solid #ccc;
+}
+
+.form-field.month, .form-field.day, .form-field.year {
+width: 28%; 
+float: left;
+} 
+
+.form-field.day {
+margin: 0 2% 0 14%;
+}
+
+.form-field.start_time, .form-field.end_time {
+margin-top: 2em;
+width: 45%;
+float: left;
+}
+
+.form-field.end_time  {
+margin-left: 10%;
+}
+
+.form-field.cost {
+clear: both;
+padding-top: 4em;
+border-top: 1px solid #ccc;
+}
+
+.completedField, .rightDetails {
+float: right;
+clear: both;
+}
+
+#summaryBlock {
+font-family: georgia, serif;
+font-size: 1.45em;
+line-height: 1.35em;
+letter-spacing: -1px;
+color: #777;
+}
+
+#summaryBlock b {
+color: #555;
+}

@@ -1,0 +1,825 @@
+/*
+Theme Name: YK+Nightlights
+Theme URI: www.designbymobius.ca
+Version: Beta
+
+Author: designbymobius
+Author URI: www.designbymobius.ca
+
+Fully Custom Blog Theme for YKFD with a central focus on Lifestyle and Entertainment
+
+
+Tags: YKFD, YK+Nightlights, Blog
+*/
+
+/* CSS Reset */
+
+html, body, div, span, input, textarea, p, h1, h2, h3, h4, h5, h6, a, ul, ol, li {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+vertical-align: baseline;
+}
+
+/* Basic Styling */
+
+html>body {
+font-size: 16px;
+}
+
+body {
+background-color: #000;
+}
+
+a {
+text-decoration: none;
+}
+
+li {
+list-style: none;
+}
+
+div {
+display: block;
+position: relative;
+background-repeat: no-repeat;
+}
+
+/* Alignment & Block Control */
+
+.left {
+float: left;
+}
+
+.right {
+float: right;
+}
+
+.center {
+margin: 0 auto;
+}
+
+.clearLeft {
+clear: left;
+}
+
+.clearRight {
+clear: right;
+}
+
+.clearAll {
+clear: both;
+}
+
+.bgFade {
+-webkit-transition: opacity 0.7s ease-out;
+-moz-transition: opacity 0.7s ease-out;
+-ms-transition: opacity 0.7s ease-out;
+-o-transition: opacity 0.7s ease-out;
+transition: opacity 0.7s ease-out; 
+}
+
+.grow {
+-webkit-transition: height 0.5s ease-out 0.2s;
+-moz-transition: height 0.5s ease-out 0.2s;
+-ms-transition: height 0.5s ease-out 0.2s;
+-o-transition: height 0.5s ease-out 0.2s;
+transition: height 0.5s ease-out 0.2s; 
+}
+
+.defaultTransition {
+-webkit-transition: all 0.25s ease-out;
+-moz-transition: all 0.25s ease-out;
+-ms-transition: all 0.25s ease-out;
+-o-transition: all 0.25s ease-out;
+transition: all 0.25s ease-out; 
+}
+
+	
+	#headerWrap {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-bottom: 25px;
+	font-family: 'Josefin Sans', sans-serif;
+	background-image: url("/wp-content/themes/YKNightlights/images/headerDeco.png");
+	background-position: center top;
+	background-repeat: repeat-x;
+	color: #333;
+	}
+	
+	#headerLogo {
+	margin-top: 25px;
+	}
+	
+	#ykSubsections {
+	display: block;
+	position: relative;
+	text-align: center;
+	color: #111;
+	font-size: 2.5em;
+	margin: 0 0 5px 0;
+	}
+	
+	#ykSubsections img {
+	display: inline;
+	position: relative;
+	}
+	
+	#ykSubsections img:hover {
+	top: 8px;
+	}
+	
+	#searchform {
+	padding-bottom: 50px;
+	}
+	
+	#s {
+	background-color: #000;
+	border-bottom: 1px solid #111;
+	color: #555;
+	text-align: center;
+	font-size: 0.85em;
+	}
+	
+	#s:focus {
+	color: #aaa;
+	border-bottom: 1px solid #333;
+	}
+	
+	#searchsubmit {
+	background-color: #333;
+	text-indent: -9999px;
+	}
+	
+	#pageDesc {
+	font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
+	font-size: 1.25em;
+	line-height: 0.9em;
+	letter-spacing: -1px;
+	color: #333;
+	padding-bottom: 25px;
+	}
+	
+	#pageDesc .highlight {
+	color: #f7aa11;
+	text-transform: uppercase;
+	}
+	
+	#contentWrap {
+	display: block;
+	width: 100%;
+	}
+	
+	.postPortalsWrap {
+	overflow: hidden;
+	height: inherit;
+	}
+	
+	.postPreviewRow{
+	margin-bottom: 25px;
+	overflow: hidden;
+	height: 268px;
+	}
+	
+	.postPreviewRow.minimized {
+	height: 150px;
+	}
+	
+	#postPortals {
+	overflow: hidden;
+	height: inherit;
+	}
+	
+	.ykControlBlock {
+	width: 201px;
+	margin: 0 15px;
+	height: inherit;
+	overflow: hidden;
+	}
+	
+	.portalNav {
+	width: 45px;
+	height: 2.2em;
+	font-size: 1.35em;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	margin-top: -1.1em;
+	}
+	
+	.portalNav a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-align: center; 
+	background-color: #000;
+	color: #fff;
+	line-height: 2.25em;
+	}
+	
+	.portalNav a:hover {
+	color: #FFB118;
+	}
+	
+	.rightNav {
+	right: 0;
+	}
+	
+	.leftNav {
+	left: 0;
+	}
+	
+	#feedBlock, #ykTimeline {
+	display: block;
+	position: relative;
+	float: left;
+	height: inherit;
+	margin-right: -99999em;
+	}
+	
+	#feedBlock li, #ykTimeline li, #randomPosts li {
+	display: block;
+	position: relative;
+	width: 201px;
+	height: inherit;
+	margin-right: 15px;
+	background-color: #aaa;
+	}
+	
+	#feedBlock li a, #ykTimeline li a, #randomPosts li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	}
+	
+	#feedBlock li .grow, #ykTimeline li .grow, #randomPosts li .grow {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 0;
+	bottom: 0;
+	background-color: #000;
+	font-family: helvetica, arial, sans-serif;
+	}
+	
+	.ykControlBlock a {
+	display: block; 
+	position: relative;
+	}
+	
+	.postPreviewRow.minimized .ykControlBlock #ykNightlightsLogo {
+	margin-top: 10%;
+	}
+	
+	#contentWrap:hover .postPreviewRow .postPortalsWrap ul li, #footerWrap:hover #randomPosts li  {
+	opacity: 0.2;
+	filter: alpha(opacity=20);
+	}
+	
+	#contentWrap:hover .postPreviewRow .postPortalsWrap ul li:hover, #footerWrap:hover #randomPosts li:hover  {
+	opacity: 1; 
+	filter: alpha(opacity=100);
+	}
+	
+	#feedBlock:hover li:hover .grow, #ykTimeline:hover li:hover .grow, #randomPosts:hover li:hover .grow  {
+	height: 21px;
+	}
+		
+	.categoryLabel {
+	display: block;
+	position: relative;
+	width: 100%;
+	color: #fff;
+	font-size: 0.85em;
+	margin-top: 5px;
+	text-align: center;
+	letter-spacing: 0.06em;
+	line-height: 1em;
+	padding: 0px 7px;
+	margin-right: 14px;
+	text-transform: uppercase;
+	font-family: helvetica, arial ,sans-serif;
+	}
+	
+	.postTitle {
+	display: block;
+	position: relative;
+	max-width: 60%;
+	color: #333;
+	margin-top: 4px;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	}
+	
+	.postTitleBlock {
+	padding: 7px 10px 16px 10px;
+	width: 181px;
+	background-color: #000;
+	margin-top: 45.75%;
+	font-size: 1.75em;
+	line-height: 0.9em;
+	font-family: 'Josefin Sans',sans-serif;
+	color: #fff;
+	text-align: center;
+	}
+	
+	.minimized .postPortalsWrap ul li a .postTitleBlock, .minimized li a .postTitleBlock{
+	margin-top: 0%;
+	}
+	
+	.postTitle a {
+	display: inline;
+	width: auto;
+	height: auto;
+	}
+	
+	#feedBlock li a .postTitleBlock, #ykTimeline li a .postTitleBlock, #randomPosts li a .postTitleBlock {
+	display: none;
+	}
+	
+	#feedBlock li:hover a .postTitleBlock, #ykTimeline li:hover a .postTitleBlock, #randomPosts li:hover a .postTitleBlock {
+	display: block;
+	opacity: 0.9;
+	filter: alpha(opacity=90);
+	font-size: 1.45em;
+	}
+	
+	#titleBlock, #contentBlock, #catNav, #socialBlock, #pageDesc, #randomPosts, .catDesc {
+	margin-left: 234px;
+	}
+	
+	#titleBlock {
+	color: #F5AA11;
+	font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
+	font-size: 3.5em;
+	line-height: 0.9em;
+	letter-spacing: -5px;
+	margin-top: 32px;
+	margin-bottom: 64px;
+	margin-right: 32px;
+	}
+	
+	#titleBlock .postMeta {
+	font-size: 0.25em;
+	line-height: 2.25em;
+	color: #333;
+	letter-spacing: 0;
+	}
+	
+	.postMeta .authorMeta{
+	color: #444;
+	text-transform: uppercase;
+	}
+	
+	.postMeta .authorMeta a {
+	color: #795305;
+	}
+	
+	.postMeta .authorMeta a:hover {
+	color: #F5AA11;
+	}
+	
+	#contentBlock {
+	color: #555;
+	max-width: 60%;
+	font-size: 1.25em;
+	line-height: 1.55em;
+	font-family: georgia, serif;
+	}
+	
+	#contentBlock p {
+	margin-bottom: 50px;
+	}
+	
+	#contentBlock p a {
+	color: #795305;
+	}
+	
+	#contentBlock p a:hover {
+	color: #f5aa11;
+	}
+	
+	#contentBlock .shareBlock {
+	position: absolute;
+	top: 0px;
+	left: -160px;
+	}
+	
+	#twitterTrain {
+	position: absolute;
+	top: 180px;
+	width: 160px;
+	left: -216px; 
+	font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
+	overflow: hidden;
+	}
+	
+	#twitterTrain li .widgettitle {
+	display: none;
+	}
+	
+	#ttToggle {
+	display: block;
+	padding: 3px 10px;
+	text-transform: uppercase;
+	color: #f7aa11;
+	text-align: center;
+	border: 1px solid #f7aa11;
+	font-size: 0.75em;
+	}
+	
+	#recent-tweets {
+	height: 0px;
+	}
+	
+	#twitter_update_list {
+	line-height: 1em;
+	font-size: 0.65em;
+	}
+	
+	#twitter_update_list li {
+	margin-bottom: 25px;
+	}
+	
+	#twitter_update_list li span {
+	display: block;
+	}
+	
+	#twitter_update_list li span a {
+	color: #795305;
+	}
+	
+	#twitter_update_list li span a:hover {
+	color: #f7aa11;
+	}
+	
+	#twitter_update_list li a {
+	color: #222;
+	}
+
+
+	#contentBlock .shareBlock a {
+	display: block;
+	height: 25px;
+	margin-bottom: 20px;
+	opacity: 0.65;
+	filter: alpha(opacity=65);
+	background-image: url("/wp-content/themes/YKNightlights/images/snSprite.png");
+	}
+	
+	#contentBlock .shareBlock a:hover {
+	opacity: 1;
+	filter: alpha(opacity=100);
+	}
+	
+	.shareBlock a.fbShareIcon {
+	width: 13px;
+	background-position: -74px 0;
+	}
+	
+	.shareBlock a.twitterShareIcon {
+	width: 36px;
+	background-position: -74px -25px;
+	}
+	
+	.shareBlock a.tumblrShareIcon {
+	width: 15px;
+	background-position: -89px 0px;
+	}
+	
+	#catNav {
+	display: block;
+	overflow: hidden;
+	margin-bottom: 15px;
+	font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
+	}
+	
+	#catNav li {
+	float: left;
+	margin-right: 30px;
+	}
+	
+	#catNav li a {
+	color: #795305;
+	font-size: 0.85em;
+	text-transform: uppercase;
+	}
+	
+	#catNav li a:hover {
+	color: #f7aa11;
+	}
+	
+	.current-cat a{
+	color: #F5AA11 !important;
+	font-weight: 900;
+	}
+			
+	#nightlights {
+	font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
+	font-size: 0.75em;
+	color: #333;
+	}
+	
+	#nightlights a {
+	color: #795305;
+	}
+	
+	#nightlights a:hover {
+	color: #f7aa11;
+	}
+	
+	#footerWrap {
+	font-family: Lucida Grande, Lucida Sans Unicode, sans-serif;
+	border-top: 1px solid #333;
+	margin: 50px 0 25px 0;
+	padding: 25px 0;
+	}
+	
+	#randomPosts {
+	margin-right: 25px;
+	margin-bottom: 25px;
+	}
+	
+	.catDesc .highlight {
+	color: #795305;
+	}
+	
+	.catDesc {
+	color: #333;
+	margin-bottom: 10px;
+	}
+	
+	#socialBlock {
+	}
+	
+	#socialBlock a {
+	display: block;
+	margin-right: 25px;
+	height: 25px;
+	background-repeat: no-repeat;
+	background-image: url("/wp-content/themes/YKNightlights/images/snSprite.png");
+	}
+	
+	#socialBlock a.twitterPageIcon {
+	width: 36px;
+	background-position: -13px -25px;
+	}
+	
+	#socialBlock a.twitterPageIcon:hover {
+	background-position: -13px 0px;
+	}
+	
+	#socialBlock a.fbPageIcon {
+	width: 13px;
+	background-position: 0px -25px;
+	}
+	
+	#socialBlock a.fbPageIcon:hover {
+	background-position: 0px 0px;
+	}
+	
+	#socialBlock a.rssPageIcon {
+	width: 25px;
+	background-position: -49px -25px;
+	}
+	
+	#socialBlock a.rssPageIcon:hover {
+	background-position: -49px 0px;
+	}
+	
+	#legalBlock {
+	margin-right: 336px;
+	color: #333;
+	line-height: 1.75em;
+	}
+	
+	/* Comments */
+
+#commentBlock {
+margin-top: 100px;
+margin-bottom: 30px;
+border-top: 1px solid #333;
+}
+
+#commentlist {
+padding: 10px 20px;
+}
+
+#commentBlock .commentHeader, #commentStatus {
+padding: 10px 20px;
+text-transform: uppercase;
+font-family: arial, helvetica, sans-serif;
+font-size: 0.85em;
+letter-spacing: 1px;
+text-align: center;
+color: #555;
+}
+
+#commentlist .comment {
+overflow: hidden;
+clear: both;
+}
+
+.comment .underModeration {
+display: block;
+padding: 5px 0;
+color: #ddd;
+line-height: 1em;
+text-transform: uppercase;
+font-size: 0.65em;
+font-family: arial, helvetica, sans-serif;
+}
+
+.comment p {
+margin-top: 5px;
+color: #555;
+clear: both;
+font-family: georgia, serif;
+font-size: 1.1em;
+}
+
+#commentlist .comment.depth-1 {
+padding-bottom: 10px;
+margin-bottom: 20px;
+}
+
+.comment .comment {
+width: 92%;
+min-width: 400px;
+float: right;
+margin-top: 10px;
+padding-top: 20px;
+}
+
+.commentAuthor {
+width: 75px;
+text-align: center;
+font-family: arial, helvetica, sans-serif;
+font-size: 0.85em;
+color: #555;
+float: left;
+}
+
+.commentAuthor img {
+margin-bottom: 3px;
+}
+
+.commentDetails {
+min-width: 80%;
+float: right;
+}
+
+.commentDetails a, .commentDetails .childComment {
+font-family: arial, helvetica, sans-serif;
+text-transform: uppercase;
+}
+
+.commentDetails p a {
+font-size: 0.8em;
+color: #999;
+line-height: inherit;
+}
+
+.comment-edit-link, .comment-reply-link {
+line-height: 1em;
+padding: 1px 3px;
+float: right;
+color: #795305;
+margin-left: 10px;
+}
+
+.commentDetails a:hover {
+color: #f7aa11;
+}
+
+.commentDetails .childComment {
+color: #222;
+font-size: 0.65em;
+line-height: 1em;
+}
+
+.commentDetails .childComment a {
+float: none;
+position: inline;
+padding: 0;
+color: #795305;
+}
+
+.commentDetails .childComment a:hover {
+color: #f7aa11;
+}
+
+.commentPostTime {
+font-family: arial, helvetica, sans-serif;
+font-size: 0.65em;
+color: #222;
+text-transform: uppercase;
+}
+
+.comment-edit-link, .comment-reply-link {
+font-size: 0.65em;
+}
+
+#respond {
+padding: 10px 20px;
+color: #555;
+}
+
+#respond #reply-title {
+text-transform: uppercase;
+font-family: arial, helvetica, sans-serif;
+letter-spacing: 1px;
+font-size: 0.8em;
+font-weight: 100;
+line-height: 5em;
+}
+
+#respond #reply-title a:hover {
+text-decoration: underline;
+}
+
+#respond #reply-title small {
+float: right;
+}
+
+#respond form p, #respond form div label {
+text-transform: uppercase;
+font-family: arial, helvetica, sans-serif;
+letter-spacing: 1px;
+text-align: center;
+color: #333;
+}
+
+#respond form p {
+font-size: 0.7em;
+}
+
+#respond form div {
+margin: 15px 0;
+overflow: hidden;
+}
+
+#respond form div label {
+font-size: 0.8em;
+float: left;
+}
+
+#respond form div input, #respond form div textarea {
+float: right;
+width: 75%;
+border-left: 1px solid #333;
+border-bottom: 1px solid #333;
+padding: 2px;
+font-size: 0.85em;
+word-spacing: 1px; 
+letter-spacing: 1px;
+font-family: georgia, serif;
+color: #333;
+background-color: #000;
+
+}
+
+#respond form div input:focus, #respond form div textarea:focus {
+color: #ccc;
+}
+
+#respond form div textarea {
+display: block;
+min-height: 120px;
+height: auto;
+max-width: 75%;
+}
+
+#respond form .form-submit #submit {
+padding: 4px 10px;
+text-transform: uppercase;
+font-size: 1.2em;
+letter-spacing: 1px;
+color: #333;
+background-color: #000;
+border: 1px solid #000;
+-webkit-transition: all 0.25s ease-out;
+-moz-transition: all 0.25s ease-out;
+-ms-transition: all 0.25s ease-out;
+-o-transition: all 0.25s ease-out;
+transition: all 0.25s ease-out; 
+}
+
+#respond form .form-submit #submit:hover  {
+color: #f7aa11;
+border: 1px solid #f7aa11;
+}
+
+#respond form p .highlight, #respond form div label .highlight {
+color: #795305;
+font-weight: 900;
+}
+
+#commentStatus {
+width: 470px;
+font-weight: 900;
+border-bottom: 1px solid #333;
+}
