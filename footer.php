@@ -1,117 +1,114 @@
 <div id="footerWrap" class="center">
 
-<?php if (is_single()) {
+  <?php if (is_single()) {
 
-function randomizeFooterPosts() {
+    function randomizeFooterPosts() {
 
-	do {
-	$category = get_the_category();
-	$currentCat = $category[0]->cat_name;
+    	do {
 
-	$catArray = get_categories();
+      	$category = get_the_category();
+      	$currentCat = $category[0]->cat_name;
 
-	$selectedCat = array_rand($catArray, 1);
+      	$catArray = get_categories();
 
-	$theCat = $catArray[$selectedCat]->cat_name;
-	} while ($theCat == $currentCat);
-		
+      	$selectedCat = array_rand($catArray, 1);
 
-$theCatSlug = $catArray[$selectedCat]->cat_ID;		
+      	$theCat = $catArray[$selectedCat]->cat_name;
+    	} while ($theCat == $currentCat);
+    		
 
-return array($theCat, $theCatSlug);
+      $theCatSlug = $catArray[$selectedCat]->cat_ID;		
 
-}
+      return array( $theCat, $theCatSlug );
+    }
 
-$footerPosts = randomizeFooterPosts();
+    $footerPosts = randomizeFooterPosts();
+  ?>
 
+    <div class="catDesc">In: <span class="highlight"><?php echo $footerPosts[0]; ?></span></div>
+    <ul id="randomPosts" class="postPreviewRow minimized">
 
-echo ('<div class="catDesc">In: <span class="highlight">'.$footerPosts[0].'</span></div>');
-echo ('<ul id="randomPosts" class="postPreviewRow minimized">');
+      <?php
 
-$randomPostQuery = new WP_Query(array('cat'=>$footerPosts[1], 'orderby'=>'date', 'showposts'=>'14'));
+        $randomPostQuery = new WP_Query(array('cat'=>$footerPosts[1], 'orderby'=>'date', 'showposts'=>'14'));
 
+        while ($randomPostQuery->have_posts()) : $randomPostQuery->the_post();
 
-while ($randomPostQuery->have_posts()) : $randomPostQuery->the_post();
+        $coverPhoto = get_post_meta($post->ID, 'cover_photo', true);
+        $posttype = get_post_type();
 
-$coverPhoto = get_post_meta($post->ID, 'cover_photo', true);
-$posttype = get_post_type();
+        switch ($posttype) {
 
-switch ($posttype) {
+          case "post":
+            $category = get_the_category($post->ID); 
+            $catName = $category['0']->cat_name;
+            $catSlug = $category['0']->slug;
+          break;
 
-case "post":
-$category = get_the_category($post->ID); 
-$catName = $category['0']->cat_name;
-$catSlug = $category['0']->slug;
-break;
+          case "youngkings": 
+            $catName = $posttype;
+          break;
 
-case "youngkings": 
-$catName = $posttype;
-break;
+          case "fd":
+            $catName = $posttype;
+          break;
+        }
+      ?>
 
-case "fd":
-$catName = $posttype;
-break;
-}
+      <li class="left bgFade" 
+      style="background-image: url('<?php echo($coverPhoto['url']); ?>');
+      background-position:
+      <?php 
+      if ($coverPhoto['verticalQuickPosition'] == "middle") {
+      echo (" center "); 
+      } else {
+      echo ($coverPhoto['verticalQuickPosition']." ");
+      }
 
-?>
+      echo $coverPhoto['horizontalQuickPosition'];
+       ?>;
+      ">
 
-<li class="left bgFade" 
-style="background-image: url('<?php echo($coverPhoto['url']); ?>');
-background-position:
-<?php 
-if ($coverPhoto['verticalQuickPosition'] == "middle") {
-echo (" center "); 
-} else {
-echo ($coverPhoto['verticalQuickPosition']." ");
-}
+        <a href="<?php the_permalink(); ?>">
+          <div class="postTitleBlock">
+            <?php the_title(); ?>
+          </div>
+        </a>
 
-echo $coverPhoto['horizontalQuickPosition'];
- ?>;
-">
+        <div class="grow">
+          <span class="categoryLabel center">
+            <?php echo $catName; ?>
+          </span>
+        </div>
+      </li>
 
-<a href="<?php the_permalink(); ?>">
+      <?php 
+        endwhile;
+        wp_reset_query();
+      ?>
 
-<div class="postTitleBlock">
-<?php the_title(); ?>
-</div>
-</a>
+    </ul>
 
+  <?php } ?>
 
-<div class="grow">
-<span class="categoryLabel center">
-<?php echo $catName; ?>
-</span>
+  <div id="socialBlock" class="left">
 
-</div>
-</li>
+    <?php $templateURL = get_bloginfo('template_url'); ?>
+    <a href="http://www.facebook.com/ykfdinc" class="fbPageIcon left" target="_blank">
+    </a>
 
-<?php 
-endwhile;
-wp_reset_query(); 
+    <a href="http://twitter.com/YKNightlights" class="twitterPageIcon left" target="_blank">
+    </a>
 
-echo ('</ul>');
+    <a href="<?php bloginfo('atom_url'); ?>" class="rssPageIcon left" target="_blank">
+    </a>
+  </div>
 
-} ?>
-
-<div id="socialBlock" class="left">
-
-<?php $templateURL = get_bloginfo('template_url'); ?>
-<a href="http://www.facebook.com/ykfdinc" class="fbPageIcon left" target="_blank">
-</a>
-
-<a href="http://twitter.com/YKNightlights" class="twitterPageIcon left" target="_blank">
-</a>
-
-<a href="<?php bloginfo('atom_url'); ?>" class="rssPageIcon left" target="_blank">
-</a>
-</div>
-
-<div id="legalBlock" class="right">
-<?php the_time('Y') ?> YK+Nightlights. All Rights Reserved - <strong>YKFD</strong>
-</div>
+  <div id="legalBlock" class="right">
+    <?php the_time('Y') ?> YK+Nightlights. All Rights Reserved - <strong>YKFD</strong>
+  </div>
 
 </div>
-
 
 <?php wp_footer(); ?>
 
