@@ -12,6 +12,35 @@
 
 add_action('admin_head', 'adminStyleMods');
 
+// load category custom metaboxes 
+
+  function load_category_metaboxes(){
+
+    require_once( 'classes/tax-meta-class/Tax-meta-class/Tax-meta-class.php' );
+
+    $category_img_metabox_config = array(
+    
+      'id' => 'category_image',
+      'title' => 'Category Image',
+      'pages' => array('category'),
+      'context' => 'normal',
+      'local_images' => true,
+      'use_with_theme' => get_stylesheet_directory_uri() . '/classes/tax-meta-class/Tax-meta-class'
+    );
+
+    $category_id = $_GET['tag_ID'] ? $_GET['tag_ID'] : get_queried_object()->term_id;
+
+    if( !$category_id ) return;
+
+    $category_img_metabox = new Tax_Meta_Class( $category_img_metabox_config );
+
+    $category_img_metabox->addImage( 'yk_category_image', array( 'name' => 'Image' ));
+
+    $category_img_metabox->Finish();
+  }
+
+  if( is_admin() ) load_category_metaboxes();
+
 
 /*  Enqueue Scripts   */
 
@@ -67,8 +96,6 @@ global $enqueueable_js;
 		
 		wp_enqueue_script($scriptAlias);
 	}
-	
-	wp_deregister_script( 'jquery' );
 }
 
 add_action('wp_enqueue_scripts', 'javascript_enqueues');
