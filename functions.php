@@ -20,7 +20,7 @@ add_action('admin_head', 'adminStyleMods');
 
     $category_img_metabox_config = array(
     
-      'id' => 'category_image',
+      'id' => 'yk_category_image',
       'title' => 'Category Image',
       'pages' => array('category'),
       'context' => 'normal',
@@ -29,8 +29,6 @@ add_action('admin_head', 'adminStyleMods');
     );
 
     $category_id = $_GET['tag_ID'] ? $_GET['tag_ID'] : get_queried_object()->term_id;
-
-    if( !$category_id ) return;
 
     $category_img_metabox = new Tax_Meta_Class( $category_img_metabox_config );
 
