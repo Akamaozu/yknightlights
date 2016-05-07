@@ -28,11 +28,23 @@ add_action('admin_head', 'adminStyleMods');
       'use_with_theme' => get_stylesheet_directory_uri() . '/classes/tax-meta-class/Tax-meta-class'
     );
 
-    $category_id = $_GET['tag_ID'] ? $_GET['tag_ID'] : get_queried_object()->term_id;
-
     $category_img_metabox = new Tax_Meta_Class( $category_img_metabox_config );
 
     $category_img_metabox->addImage( 'yk_category_image', array( 'name' => 'Image' ));
+        
+    $category_id = $_GET['tag_ID'] ? $_GET['tag_ID'] : get_queried_object()->term_id;
+
+    if( $category_id ){
+
+      $image_metadata = get_term_meta( $category_id, 'yk_category_image' );
+
+      if( count( $image_metadata ) > 0 ){
+
+        $category_img_metabox->addRadio('yk_category_image_vertical_position', array( 'top' => 'Top', 'center' => 'Center', 'bottom' => 'Bottom'), array( 'name' => 'Vertical Image Position' ));
+
+        $category_img_metabox->addRadio('yk_category_image_horizontal_position', array( 'left' => 'Left', 'center' => 'Center', 'right' => 'Right'), array( 'name' => 'Horizontal Image Position' ));
+      }
+    }
 
     $category_img_metabox->Finish();
   }
