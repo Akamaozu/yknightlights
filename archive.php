@@ -133,8 +133,8 @@
 
 			if( $categoryMetadata ){
 
-				$categoryImageVerticalPos = get_term_meta( $category[0]->term_id, 'yk_category_image_vertical_position' );
-				$categoryImageHorizontalPos = get_term_meta( $category[0]->term_id, 'yk_category_image_horizontal_position' );
+				$categoryImageVerticalPos = get_term_meta( $category[0]->term_id, 'yk_category_image_vertical_position', true );
+				$categoryImageHorizontalPos = get_term_meta( $category[0]->term_id, 'yk_category_image_horizontal_position', true );
 			}
 
 			switch( $posttype ){
@@ -192,7 +192,7 @@
 			}
 		?>
 
-		<div class="ykControlBlock left" style="background-image: url( <?php echo $catCardImgUrl; ?> );">
+		<div class="ykControlBlock left" style="background-image: url( <?php echo $catCardImgUrl; ?> ); background-position: <?php echo $categoryImageVerticalPos ? $categoryImageVerticalPos : 'top'; ?> <?php echo $categoryImageHorizontalPos ? $categoryImageHorizontalPos : 'center'; ?>;">
 	</div>
 
 	<div class="postPortalsWrap center">
