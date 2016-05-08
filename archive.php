@@ -192,7 +192,7 @@
 			}
 		?>
 
-		<div class="ykControlBlock left" style="background-image: url( <?php echo $catCardImgUrl; ?> ); background-position: <?php echo $categoryImageVerticalPos ? $categoryImageVerticalPos : 'top'; ?> <?php echo $categoryImageHorizontalPos ? $categoryImageHorizontalPos : 'center'; ?>;">
+		<div class="ykControlBlock left" style="background-image: url( <?php echo $catCardImgUrl; ?> ); background-position: <?php echo $categoryImageVerticalPos ? $categoryImageVerticalPos : 'center'; ?> <?php echo $categoryImageHorizontalPos ? $categoryImageHorizontalPos : 'center'; ?>;">
 	</div>
 
 	<div class="postPortalsWrap center">
