@@ -614,7 +614,6 @@ function widget_builder(){
 add_action('widgets_init', 'widget_builder');
 
 // create theme settings page
-
 	add_action( 'admin_menu', 'create_theme_settings_page' );
 
 	function create_theme_settings_page(){
@@ -670,9 +669,15 @@ add_action('widgets_init', 'widget_builder');
 						    },
 						    library: {
 						    	type: 'image'
-						    }, 
-						    multiple: false 
+						    },
+						    multiple: false
 						  });
+
+					   // set keys + values to be sent with image upload
+						  mediaUploader.uploader.options.uploader.params = {
+						  	'upload-source': 'theme-settings',
+						  	'upload-type': 'logo-image'
+						  };
 
 				    // When a file is selected, grab the URL and set it as the text field's value
 					    mediaUploader.on('select', function() {
@@ -683,11 +688,31 @@ add_action('widgets_init', 'widget_builder');
 
 				    // Open the uploader dialog
 					    mediaUploader.open();
+
 					});
 				});
 			</script>
 
 		<?php
+	}
+
+// ensure media uploader for logo (on theme settings page) accepts images only
+  add_filter('upload_mimes','restrict_theme_settings_logo_to_images');
+	
+	function restrict_theme_settings_logo_to_images( $mimes ){
+
+		// ensure it's theme settings logo upload
+			if( !$_REQUEST['upload-source'] || $_REQUEST['upload-source'] !== 'theme-settings' ) return $mimes;
+			if( !$_REQUEST['upload-type'] || $_REQUEST['upload-type'] !== 'logo-image' ) return $mimes;
+		
+		// set permitted mime types to images only
+			$mimes = array(
+	      'jpg|jpeg|jpe' => 'image/jpeg',
+	      'gif' => 'image/gif',
+	      'png' => 'image/png'
+			);
+
+		return $mimes;
 	}
 
 ?>
