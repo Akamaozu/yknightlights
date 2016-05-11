@@ -613,5 +613,81 @@ function widget_builder(){
 
 add_action('widgets_init', 'widget_builder');
 
+// create theme settings page
+
+	add_action( 'admin_menu', 'create_theme_settings_page' );
+
+	function create_theme_settings_page(){
+
+		add_menu_page( 'Theme Settings', 'Theme Settings', 'administrator', 'theme-settings', 'render_theme_settings_page' );
+	}
+
+	function render_theme_settings_page(){
+
+    wp_enqueue_media();
+    wp_enqueue_style( 'theme-settings-style', get_stylesheet_directory_uri() . '/stylesheets/theme-settings-style.css', array(), '0.0.1' );
+
+		?>
+
+			<div id="theme-settings" class="wrap">
+
+				<h1>Theme Settings</h1>
+
+				<div class="row">
+					<div class="title">Logo</div>
+					<div class="content">
+						<input id="image-url" >
+						<div id="upload-button" class="button">Upload</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="content">
+						<div id="update-logo" class="button button-primary button-large">Save</div>
+					</div>
+				</div>
+			</div>
+
+			
+			<script>
+				jQuery(document).ready( function($){
+
+				  var mediaUploader;
+
+				  $('#upload-button').click( function(e) {
+				    
+				    e.preventDefault();
+				    
+				    // If the uploader object has already been created, reopen the dialog
+				      if( mediaUploader ) return mediaUploader.open();
+				    
+				    // Extend the wp.media object
+					    mediaUploader = wp.media({
+					      
+					      title: 'Select Logo Image',
+					      button: {
+						      text: 'Set as Logo'
+						    },
+						    library: {
+						    	type: 'image'
+						    }, 
+						    multiple: false 
+						  });
+
+				    // When a file is selected, grab the URL and set it as the text field's value
+					    mediaUploader.on('select', function() {
+					      
+					      var attachment = mediaUploader.state().get('selection').first().toJSON();
+					      $('#image-url').val( attachment.url );
+					    });
+
+				    // Open the uploader dialog
+					    mediaUploader.open();
+					});
+				});
+			</script>
+
+		<?php
+	}
 
 ?>

@@ -1,0 +1,31 @@
+#theme-settings {
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#theme-settings > h1 {
+  
+  margin-bottom: 1.25em;
+}
+
+#theme-settings > .row {
+  
+  margin-bottom: 1em;
+}
+
+  #theme-settings > .row > .title {
+    
+    font-weight: 900;
+    font-size: 1.25em;
+    margin-bottom: 1em;
+
+    padding-left: 1em;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #theme-settings > .row > .content {
+    
+    padding: 1em;
+  }
