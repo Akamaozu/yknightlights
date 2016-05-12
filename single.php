@@ -1,18 +1,17 @@
-<?php get_header(); ?>
+<?php 
+	
+	// required variables
+		$templateURL = get_bloginfo('template_url');		 
+    $homeCardImageURL = get_option('home_card_url') ? esc_attr( get_option('home_card_url') ) : $templateURL . '/images/yk-home-icon.png';
+	
+	get_header(); 
+?>
 
 <div id="contentWrap" class="center"> 
 
 <div class="postPreviewRow minimized">
 
-<div class="ykControlBlock left">
-
-<?php
-$templateURL = get_bloginfo('template_url'); 
-?>
-
-<img src="<?php echo $templateURL; ?>/images/yk-home-icon.png"></img>
-
-</div>
+<div class="ykControlBlock left" style="background-image: url( <?php echo $homeCardImageURL; ?> ); background-position: center;"></div>
 
 <div class="postPortalsWrap center">
 <ul id="ykTimeline" class="left">
