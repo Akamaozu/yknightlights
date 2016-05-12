@@ -629,6 +629,7 @@ add_action('widgets_init', 'widget_builder');
 		function register_theme_settings(){
 
 			register_setting( 'yknightlights-theme', 'logo_url' );
+			register_setting( 'yknightlights-theme', 'home_card_url' );
 		}
 	}
 
@@ -639,13 +640,17 @@ add_action('widgets_init', 'widget_builder');
 
 			<h1>Theme Settings</h1>
 
+	    <?php submit_button( 'Save Changes', 'right button-primary' ); ?>
+
 			<form method="post" action="options.php">
 		    
 		    <?php 
 		    	settings_fields( 'yknightlights-theme' );
 		    	do_settings_sections( 'yknightlights-theme' ); 
 
-		    	$logo_url = esc_attr( get_option('logo_url') );
+		    	// required variables
+			    	$logo_url = esc_attr( get_option('logo_url') );
+			    	$home_card_url = esc_attr( get_option('home_card_url') );
 		    ?>
 
 				<div class="row">
@@ -655,7 +660,18 @@ add_action('widgets_init', 'widget_builder');
 						<img id="logo-preview" class="<?php echo( !$logo_url ? 'hidden' : '' ); ?>" src="<?php echo $logo_url; ?>">
 
 						<input id="image-url" name="logo_url" value="<?php echo $logo_url; ?>">
-						<div id="upload-button" class="button">Choose Logo</div>
+						<div id="upload-button" class="button">Choose Image</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="title">Home Card Image</div>
+					<div class="content">
+
+						<img id="home-card-preview" class="<?php echo( !$home_card_url ? 'hidden' : '' ); ?>" src="<?php echo $home_card_url; ?>">
+
+						<input id="home-card-url" name="home_card_url" value="<?php echo $home_card_url; ?>">
+						<div id="choose-home-card" class="button">Choose Image</div>
 					</div>
 				</div>
 
@@ -672,13 +688,13 @@ add_action('widgets_init', 'widget_builder');
 	}
 
 // ensure media uploader for logo (on theme settings page) accepts images only
-  add_filter('upload_mimes','restrict_theme_settings_logo_to_images');
+  add_filter('upload_mimes','restrict_theme_settings_upload_to_images');
 	
-	function restrict_theme_settings_logo_to_images( $mimes ){
+	function restrict_theme_settings_upload_to_images( $mimes ){
 
 		// ensure it's theme settings logo upload
 			if( !$_REQUEST['upload-source'] || $_REQUEST['upload-source'] !== 'theme-settings' ) return $mimes;
-			if( !$_REQUEST['upload-type'] || $_REQUEST['upload-type'] !== 'logo-image' ) return $mimes;
+			if( !$_REQUEST['upload-type'] || $_REQUEST['upload-type'] !== 'image-only' ) return $mimes;
 		
 		// set permitted mime types to images only
 			$mimes = array(

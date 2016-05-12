@@ -4,6 +4,16 @@
   overflow: hidden;
 }
 
+#theme-settings .hidden {
+
+  display: none !important;
+}
+
+#theme-settings .right {
+
+  float: right; !important;
+}
+
 #theme-settings > h1 {
   
   margin-bottom: 1.25em;
@@ -11,7 +21,7 @@
 
 #theme-settings > form > .row {
   
-  margin-bottom: 1em;
+  margin-bottom: 3em;
 }
 
   #theme-settings > form > .row > .title {
@@ -30,12 +40,14 @@
     padding: 1em;
   }
 
-    #theme-settings > form > .row > .content > #image-url {
+    #theme-settings > form > .row > .content > #image-url,
+    #theme-settings > form > .row > .content > #home-card-url {
       
       display: none;
     }
 
-    #theme-settings > form > .row > .content > #logo-preview {
+    #theme-settings > form > .row > .content > #logo-preview,
+    #theme-settings > form > .row > .content > #home-card-preview {
       
       display: block;
       width: 15em;
