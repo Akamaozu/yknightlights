@@ -619,6 +619,13 @@ add_action('widgets_init', 'widget_builder');
 	function create_theme_settings_page(){
 
 		add_menu_page( 'Theme Settings', 'Theme Settings', 'administrator', 'theme-settings', 'render_theme_settings_page' );
+
+		add_action('admin_init', 'register_theme_settings');
+
+		function register_theme_settings(){
+
+			register_setting( 'yknightlights-theme', 'logo_url' );
+		}
 	}
 
 	function render_theme_settings_page(){
@@ -633,19 +640,30 @@ add_action('widgets_init', 'widget_builder');
 
 				<h1>Theme Settings</h1>
 
-				<div class="row">
-					<div class="title">Logo</div>
-					<div class="content">
-						<input id="image-url" >
-						<div id="upload-button" class="button">Upload</div>
-					</div>
-				</div>
+				<form method="post" action="options.php">
+			    
+			    <?php 
+			    	settings_fields( 'yknightlights-theme' );
+			    	do_settings_sections( 'yknightlights-theme' ); 
 
-				<div class="row">
-					<div class="content">
-						<div id="update-logo" class="button button-primary button-large">Save</div>
+			    	$logo_url = esc_attr( get_option('logo_url') );
+			    ?>
+
+					<div class="row">
+						<div class="title">Logo</div>
+						<div class="content">
+							<input id="image-url" name="logo_url" value="<?php echo $logo_url; ?>">
+							<div id="upload-button" class="button">Upload</div>
+						</div>
 					</div>
-				</div>
+
+					<div class="row">
+						<div class="content">    
+					    <?php submit_button(); ?>
+						</div>
+					</div>
+
+				</form>
 			</div>
 
 		<?php
