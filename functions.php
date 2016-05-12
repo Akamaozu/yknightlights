@@ -621,6 +621,10 @@ add_action('widgets_init', 'widget_builder');
 		add_menu_page( 'Theme Settings', 'Theme Settings', 'administrator', 'theme-settings', 'render_theme_settings_page' );
 
 		add_action('admin_init', 'register_theme_settings');
+    
+    wp_enqueue_media();
+    wp_enqueue_style( 'theme-settings-style', get_stylesheet_directory_uri() . '/stylesheets/theme-settings-style.css', array(), '0.0.1' );
+    wp_enqueue_script( 'theme-settings-behavior', get_stylesheet_directory_uri() . '/scripts/theme-settings-behavior.js', array('jquery'), '0.0.1' );
 
 		function register_theme_settings(){
 
@@ -628,43 +632,41 @@ add_action('widgets_init', 'widget_builder');
 		}
 	}
 
-	function render_theme_settings_page(){
-
-    wp_enqueue_media();
-    wp_enqueue_style( 'theme-settings-style', get_stylesheet_directory_uri() . '/stylesheets/theme-settings-style.css', array(), '0.0.1' );
-    wp_enqueue_script( 'theme-settings-behavior', get_stylesheet_directory_uri() . '/scripts/theme-settings-behavior.js', array('jquery'), '0.0.1' );
-
+	function render_theme_settings_page(){ 
 		?>
 
-			<div id="theme-settings" class="wrap">
+		<div id="theme-settings" class="wrap">
 
-				<h1>Theme Settings</h1>
+			<h1>Theme Settings</h1>
 
-				<form method="post" action="options.php">
-			    
-			    <?php 
-			    	settings_fields( 'yknightlights-theme' );
-			    	do_settings_sections( 'yknightlights-theme' ); 
+			<form method="post" action="options.php">
+		    
+		    <?php 
+		    	settings_fields( 'yknightlights-theme' );
+		    	do_settings_sections( 'yknightlights-theme' ); 
 
-			    	$logo_url = esc_attr( get_option('logo_url') );
-			    ?>
+		    	$logo_url = esc_attr( get_option('logo_url') );
+		    ?>
 
-					<div class="row">
-						<div class="title">Logo</div>
-						<div class="content">
-							<input id="image-url" name="logo_url" value="<?php echo $logo_url; ?>">
-							<div id="upload-button" class="button">Upload</div>
-						</div>
+				<div class="row">
+					<div class="title">Logo</div>
+					<div class="content">
+
+						<img id="logo-preview" class="<?php echo( !$logo_url ? 'hidden' : '' ); ?>" src="<?php echo $logo_url; ?>">
+
+						<input id="image-url" name="logo_url" value="<?php echo $logo_url; ?>">
+						<div id="upload-button" class="button">Choose Logo</div>
 					</div>
+				</div>
 
-					<div class="row">
-						<div class="content">    
-					    <?php submit_button(); ?>
-						</div>
+				<div class="row">
+					<div class="content">    
+				    <?php submit_button(); ?>
 					</div>
+				</div>
 
-				</form>
-			</div>
+			</form>
+		</div>
 
 		<?php
 	}

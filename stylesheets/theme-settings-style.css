@@ -29,3 +29,15 @@
     
     padding: 1em;
   }
+
+    #theme-settings > form > .row > .content > #image-url {
+      
+      display: none;
+    }
+
+    #theme-settings > form > .row > .content > #logo-preview {
+      
+      display: block;
+      width: 15em;
+      margin-bottom: 1.75em;
+    }

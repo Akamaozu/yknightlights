@@ -32,7 +32,9 @@ jQuery( document ).ready( function($){
       mediaUploader.on('select', function() {
         
         var attachment = mediaUploader.state().get('selection').first().toJSON();
+        
         $('#image-url').val( attachment.url );
+        $('#logo-preview').attr( 'src', attachment.url ).removeClass('hidden');
       });
 
     // Open the uploader dialog
