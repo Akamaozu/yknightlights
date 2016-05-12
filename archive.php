@@ -11,7 +11,7 @@
 	
 	<div class="postPreviewRow minimized">
 
-		<div class="ykControlBlock left" style="background-image: url( <?php echo $homeCardImageURL; ?> ); background-position: center;"></div>
+		<div class="ykControlBlock left" style="background-image: url( <?php echo $homeCardImageURL; ?> ); background-position: center; background-size: cover;"></div>
 
 		<div class="postPortalsWrap center">
 			<ul id="ykTimeline" class="left">
