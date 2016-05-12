@@ -41,13 +41,15 @@
   }
 
     #theme-settings > form > .row > .content > #image-url,
-    #theme-settings > form > .row > .content > #home-card-url {
+    #theme-settings > form > .row > .content > #home-card-url,
+    #theme-settings > form > .row > .content > #search-card-url {
       
       display: none;
     }
 
     #theme-settings > form > .row > .content > #logo-preview,
-    #theme-settings > form > .row > .content > #home-card-preview {
+    #theme-settings > form > .row > .content > #home-card-preview,
+    #theme-settings > form > .row > .content > #search-card-preview {
       
       display: block;
       width: 15em;

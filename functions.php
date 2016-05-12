@@ -630,6 +630,7 @@ add_action('widgets_init', 'widget_builder');
 
 			register_setting( 'yknightlights-theme', 'logo_url' );
 			register_setting( 'yknightlights-theme', 'home_card_url' );
+			register_setting( 'yknightlights-theme', 'search_card_url' );
 		}
 	}
 
@@ -651,6 +652,7 @@ add_action('widgets_init', 'widget_builder');
 		    	// required variables
 			    	$logo_url = esc_attr( get_option('logo_url') );
 			    	$home_card_url = esc_attr( get_option('home_card_url') );
+			    	$search_card_url = esc_attr( get_option('search_card_url') );
 		    ?>
 
 				<div class="row">
@@ -672,6 +674,17 @@ add_action('widgets_init', 'widget_builder');
 
 						<input id="home-card-url" name="home_card_url" value="<?php echo $home_card_url; ?>">
 						<div id="choose-home-card" class="button">Choose Image</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="title">Search Card Image</div>
+					<div class="content">
+
+						<img id="search-card-preview" class="<?php echo( !$search_card_url ? 'hidden' : '' ); ?>" src="<?php echo $search_card_url; ?>">
+
+						<input id="search-card-url" name="search_card_url" value="<?php echo $search_card_url; ?>">
+						<div id="choose-search-card" class="button">Choose Image</div>
 					</div>
 				</div>
 

@@ -15,6 +15,13 @@ jQuery( document ).ready( function($){
         $('#home-card-url').val( image_url );
         $('#home-card-preview').attr( 'src', image_url ).removeClass( 'hidden' );
       });
+    
+    // search card image
+      create_image_uploader_instance( '#choose-search-card', 'Select Search Card Image', 'Set Image', function( image_url ){
+            
+        $('#search-card-url').val( image_url );
+        $('#search-card-preview').attr( 'src', image_url ).removeClass( 'hidden' );
+      });
 
   function create_image_uploader_instance( trigger_query_selecter, title, btn_text, select_callback ){
 
