@@ -111,6 +111,7 @@ transition: all 0.25s ease-out;
 	
 	#headerLogo {
 	margin-top: 25px;
+	max-height: 10em;
 	}
 	
 	#ykSubsections {
