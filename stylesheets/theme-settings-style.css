@@ -1,0 +1,57 @@
+#theme-settings {
+
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#theme-settings .hidden {
+
+  display: none !important;
+}
+
+#theme-settings .right {
+
+  float: right; !important;
+}
+
+#theme-settings > h1 {
+  
+  margin-bottom: 1.25em;
+}
+
+#theme-settings > form > .row {
+  
+  margin-bottom: 3em;
+}
+
+  #theme-settings > form > .row > .title {
+    
+    font-weight: 900;
+    font-size: 1.25em;
+    margin-bottom: 1em;
+
+    padding-left: 1em;
+    padding-bottom: .5em;
+    border-bottom: 1px solid #ddd;
+  }
+
+  #theme-settings > form > .row > .content {
+    
+    padding: 1em;
+  }
+
+    #theme-settings > form > .row > .content > #image-url,
+    #theme-settings > form > .row > .content > #home-card-url,
+    #theme-settings > form > .row > .content > #search-card-url {
+      
+      display: none;
+    }
+
+    #theme-settings > form > .row > .content > #logo-preview,
+    #theme-settings > form > .row > .content > #home-card-preview,
+    #theme-settings > form > .row > .content > #search-card-preview {
+      
+      display: block;
+      width: 15em;
+      margin-bottom: 1.75em;
+    }

@@ -25,20 +25,20 @@ clear: both;
 
 /* Image Metabox Styling */
 
-.form-field {
-color: #777;
-}
-
-.form-field input[type="radio"] {
-width: auto;
-margin: 0 25% 0 5px; 
-}
-
 .metaboxWrap {
 overflow: hidden;
 }
 
-.metaboxTitle {
+.metaboxWrap .form-field {
+color: #777;
+}
+
+.metaboxWrap .form-field input[type="radio"] {
+width: auto;
+margin: 0 25% 0 5px; 
+}
+
+.metaboxWrap .metaboxTitle {
 width: 98%;
 font-size: 2.55em;
 font-weight: 900;
@@ -47,7 +47,7 @@ padding-bottom: 10px;
 border-bottom: 1px solid #ccc;
 }
 
-.metaboxTitle p {
+.metaboxWrap .metaboxTitle p {
 color: #777;
 max-width: 75%;
 margin: 10px 0;
@@ -56,39 +56,43 @@ font-size: 50%;
 font-family: georgia, serif;
 }
 
-.tlImageControl , .eventDetails{
+.tlImageControl, 
+.eventDetails{
 max-width: 45%;
 padding: 8px;
 margin: 0 8% 0 1%; 
 }
 
-.tlImageControl div p, .eventDetails div p {
+.tlImageControl div p, 
+.eventDetails div p {
 font-style: italic !important;
 }
 
-.tlImageControl div label, .eventDetails div label {
+.tlImageControl div label, 
+.eventDetails div label {
 font-size: 1.15em;
 font-weight: 900;
 color: #333;
 }
 
-.tlImageControl div, .eventDetails div {
+.tlImageControl div, 
+.eventDetails div {
 margin-bottom: 4em;
 }
 
-.metaboxImagePreview {
+.metaboxWrap .metaboxImagePreview {
 width: 201px;
 height: 268px;
 margin-left: 1%;
 border: 2px solid #333;
 }
 
-.metaboxImagePreview span {
+.metaboxWrap .metaboxImagePreview span {
 display: block;
 width: 100%;
 }
 
-.metaboxImagePreview span p {
+.metaboxWrap .metaboxImagePreview span p {
 display: block;
 max-width: 45%;
 float: right;
@@ -105,37 +109,42 @@ margin-left: 5px;
 color: #ddd;
 }
 
-.form-field.speaker, .form-field.description {
+.metaboxWrap .form-field.speaker, 
+.metaboxWrap .form-field.description {
 padding-bottom: 4em;
 border-bottom: 1px solid #ccc;
 }
 
-.form-field.month, .form-field.day, .form-field.year {
+.metaboxWrap .form-field.month, 
+.metaboxWrap .form-field.day, 
+.metaboxWrap .form-field.year {
 width: 28%; 
 float: left;
 } 
 
-.form-field.day {
+.metaboxWrap .form-field.day {
 margin: 0 2% 0 14%;
 }
 
-.form-field.start_time, .form-field.end_time {
+.metaboxWrap .form-field.start_time, 
+.metaboxWrap .form-field.end_time {
 margin-top: 2em;
 width: 45%;
 float: left;
 }
 
-.form-field.end_time  {
+.metaboxWrap .form-field.end_time  {
 margin-left: 10%;
 }
 
-.form-field.cost {
+.metaboxWrap .form-field.cost {
 clear: both;
 padding-top: 4em;
 border-top: 1px solid #ccc;
 }
 
-.completedField, .rightDetails {
+.metaboxWrap .completedField, 
+.metaboxWrap .rightDetails {
 float: right;
 clear: both;
 }

@@ -1,7 +1,8 @@
 <?php 
   
   // required vars
-    $templateURL = get_bloginfo('template_url'); 
+    $templateURL = get_bloginfo('template_url');
+    $logoUrl = esc_attr( get_option('logo_url') ); 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
@@ -55,7 +56,7 @@
  
   <div id="headerWrap">
 
-  <img src="<?php echo $templateURL; ?>/images/yklogo.png" id="headerLogo"></img>
+  <img src="<?php echo( $logoUrl ? $logoUrl : $templateURL . '/images/yklogo.png' ); ?>" id="headerLogo"></img>
   <div id="ykSubsections" class="center">
     <a href="<?php echo home_url(); ?>/youngkings/" title="Young Kings">
     <img src="<?php echo $templateURL; ?>/images/YK.png" class="defaultTransition"></img></a> <img src="<?php echo $templateURL; ?>/images/FD.png" class="defaultTransition"></img>

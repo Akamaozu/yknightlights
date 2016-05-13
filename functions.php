@@ -12,6 +12,37 @@
 
 add_action('admin_head', 'adminStyleMods');
 
+// load category custom metaboxes 
+
+  function load_category_metaboxes(){
+
+    require_once( 'classes/tax-meta-class/Tax-meta-class/Tax-meta-class.php' );
+
+    $category_img_metabox_config = array(
+    
+      'id' => 'yk_category_image',
+      'title' => 'Category Image',
+      'pages' => array('category'),
+      'context' => 'normal',
+      'local_images' => true,
+      'use_with_theme' => get_stylesheet_directory_uri() . '/classes/tax-meta-class/Tax-meta-class'
+    );
+
+    $category_img_metabox = new Tax_Meta_Class( $category_img_metabox_config );
+
+    $category_img_metabox->addImage( 'yk_category_image', array( 'name' => 'Image' ));
+        
+    $category_id = $_GET['tag_ID'] ? $_GET['tag_ID'] : get_queried_object()->term_id;
+
+	$category_img_metabox->addRadio('yk_category_image_vertical_position', array( 'top' => 'Top', 'center' => 'Center', 'bottom' => 'Bottom'), array( 'name' => 'Vertical Image Position' ));
+
+	$category_img_metabox->addRadio('yk_category_image_horizontal_position', array( 'left' => 'Left', 'center' => 'Center', 'right' => 'Right'), array( 'name' => 'Horizontal Image Position' ));
+
+    $category_img_metabox->Finish();
+  }
+
+  if( is_admin() ) load_category_metaboxes();
+
 
 /*  Enqueue Scripts   */
 
@@ -67,8 +98,6 @@ global $enqueueable_js;
 		
 		wp_enqueue_script($scriptAlias);
 	}
-	
-	wp_deregister_script( 'jquery' );
 }
 
 add_action('wp_enqueue_scripts', 'javascript_enqueues');
@@ -584,5 +613,110 @@ function widget_builder(){
 
 add_action('widgets_init', 'widget_builder');
 
+// create theme settings page
+	add_action( 'admin_menu', 'create_theme_settings_page' );
+
+	function create_theme_settings_page(){
+
+		add_menu_page( 'Theme Settings', 'Theme Settings', 'administrator', 'theme-settings', 'render_theme_settings_page' );
+
+		add_action('admin_init', 'register_theme_settings');
+    
+    wp_enqueue_media();
+    wp_enqueue_style( 'theme-settings-style', get_stylesheet_directory_uri() . '/stylesheets/theme-settings-style.css', array(), '0.0.1' );
+    wp_enqueue_script( 'theme-settings-behavior', get_stylesheet_directory_uri() . '/scripts/theme-settings-behavior.js', array('jquery'), '0.0.1' );
+
+		function register_theme_settings(){
+
+			register_setting( 'yknightlights-theme', 'logo_url' );
+			register_setting( 'yknightlights-theme', 'home_card_url' );
+			register_setting( 'yknightlights-theme', 'search_card_url' );
+		}
+	}
+
+	function render_theme_settings_page(){ 
+		?>
+
+		<div id="theme-settings" class="wrap">
+
+			<h1>Theme Settings</h1>
+
+	    <?php submit_button( 'Save Changes', 'right button-primary' ); ?>
+
+			<form method="post" action="options.php">
+		    
+		    <?php 
+		    	settings_fields( 'yknightlights-theme' );
+		    	do_settings_sections( 'yknightlights-theme' ); 
+
+		    	// required variables
+			    	$logo_url = esc_attr( get_option('logo_url') );
+			    	$home_card_url = esc_attr( get_option('home_card_url') );
+			    	$search_card_url = esc_attr( get_option('search_card_url') );
+		    ?>
+
+				<div class="row">
+					<div class="title">Logo</div>
+					<div class="content">
+
+						<img id="logo-preview" class="<?php echo( !$logo_url ? 'hidden' : '' ); ?>" src="<?php echo $logo_url; ?>">
+
+						<input id="image-url" name="logo_url" value="<?php echo $logo_url; ?>">
+						<div id="upload-button" class="button">Choose Image</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="title">Home Card Image</div>
+					<div class="content">
+
+						<img id="home-card-preview" class="<?php echo( !$home_card_url ? 'hidden' : '' ); ?>" src="<?php echo $home_card_url; ?>">
+
+						<input id="home-card-url" name="home_card_url" value="<?php echo $home_card_url; ?>">
+						<div id="choose-home-card" class="button">Choose Image</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="title">Search Card Image</div>
+					<div class="content">
+
+						<img id="search-card-preview" class="<?php echo( !$search_card_url ? 'hidden' : '' ); ?>" src="<?php echo $search_card_url; ?>">
+
+						<input id="search-card-url" name="search_card_url" value="<?php echo $search_card_url; ?>">
+						<div id="choose-search-card" class="button">Choose Image</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="content">    
+				    <?php submit_button(); ?>
+					</div>
+				</div>
+
+			</form>
+		</div>
+
+		<?php
+	}
+
+// ensure media uploader for logo (on theme settings page) accepts images only
+  add_filter('upload_mimes','restrict_theme_settings_upload_to_images');
+	
+	function restrict_theme_settings_upload_to_images( $mimes ){
+
+		// ensure it's theme settings logo upload
+			if( !$_REQUEST['upload-source'] || $_REQUEST['upload-source'] !== 'theme-settings' ) return $mimes;
+			if( !$_REQUEST['upload-type'] || $_REQUEST['upload-type'] !== 'image-only' ) return $mimes;
+		
+		// set permitted mime types to images only
+			$mimes = array(
+	      'jpg|jpeg|jpe' => 'image/jpeg',
+	      'gif' => 'image/gif',
+	      'png' => 'image/png'
+			);
+
+		return $mimes;
+	}
 
 ?>

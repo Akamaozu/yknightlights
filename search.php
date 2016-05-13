@@ -1,4 +1,11 @@
-<?php get_header(); ?>
+<?php
+  
+  // required variables
+    $templateURL = get_bloginfo('template_url');
+    $searchCardImageURL = get_option('search_card_url') ? esc_attr( get_option('search_card_url') ) : $templateURL . "/images/yk-search-icon.jpg"; 
+    
+  get_header(); 
+?>
 
 <div id="contentWrap" class="center"> 
 
@@ -22,12 +29,12 @@ $catArray = get_categories($catNavArgs);
 
 foreach ($catArray as $cat){
 
-	$catID = $cat->cat_ID;
-	$catName = $cat->name;
-	
-	$catLink = get_category_link($catID);
-	
-		echo ('<li><a href="'.$catLink.'">'.$catName.'</a></li>'); 
+  $catID = $cat->cat_ID;
+  $catName = $cat->name;
+  
+  $catLink = get_category_link($catID);
+  
+    echo ('<li><a href="'.$catLink.'">'.$catName.'</a></li>'); 
 
 }
 
@@ -37,15 +44,7 @@ foreach ($catArray as $cat){
 <div class="postPreviewRow">
 
 
-<div class="ykControlBlock left">
-
-<?php
-$templateURL = get_bloginfo('template_url'); 
-?>
-
-<img title="Search Results" src="<?php echo ($templateURL."/images/yk-search-icon.jpg"); ?>"></img>
-
-</div>
+<div class="ykControlBlock left" style="background-image: url( <?php echo $searchCardImageURL; ?> ); background-position: center; background-size: cover;"></div>
 
 <div class="postPortalsWrap center">
 
