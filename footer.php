@@ -104,8 +104,12 @@
     </a>
   </div>
 
-  <div id="legalBlock" class="right">
-    <?php echo date('Y') ?> YK+Nightlights. All Rights Reserved - <strong>YKFD</strong>
+  <div id="legalBlock">
+    <strong>ST&T Regency Schools <?php echo date('Y') ?></strong><br /><br />
+    20 Remi Fani Kayode, GRA-Ikeja, Lagos, Nigeria<br />
+    Tel: 01 453 9343<br />
+    Email: info@sttregencyschools.com<br />
+    All Rights Reserved - Issyma
   </div>
 
 </div>

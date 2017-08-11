@@ -52,16 +52,8 @@
 
 <?php flush(); ?>
 
-<body>
- 
-  <div id="headerWrap">
-
-  <img src="<?php echo( $logoUrl ? $logoUrl : $templateURL . '/images/yklogo.png' ); ?>" id="headerLogo"></img>
-  <div id="ykSubsections" class="center">
-    <a href="<?php echo home_url(); ?>/youngkings/" title="Young Kings">
-    <img src="<?php echo $templateURL; ?>/images/YK.png" class="defaultTransition"></img></a> <img src="<?php echo $templateURL; ?>/images/FD.png" class="defaultTransition"></img>
-  </div>
-
+<body> 
   <?php get_search_form(); ?>
-
+  <div id="headerWrap">
+    <img src="<?php echo( $logoUrl ? $logoUrl : $templateURL . '/images/yklogo.png' ); ?>" id="headerLogo"></img>
   </div>
