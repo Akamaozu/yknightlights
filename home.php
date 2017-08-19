@@ -100,34 +100,6 @@ wp_reset_query();
 
 </div>
 
-
-<ul id="catNav">
-<?php
-
-$catNavArgs = array (
-'type' => 'post',
-'orderby' => 'name',
-'order' => 'asc',
-'style' => 'none',
-'hide_empty' => 0,
-'exclude' => array(1)
-);
-
-$catArray = get_categories($catNavArgs);
-
-foreach ($catArray as $cat){
-
-	$catID = $cat->cat_ID;
-	$catName = $cat->name;
-	
-	$catLink = get_category_link($catID);
-	
-		echo ('<li><a href="'.$catLink.'">'.$catName.'</a></li>'); 
-}
-
-?>
-</ul>
-
 </div>
 
 <?php get_footer(); ?>

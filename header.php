@@ -54,6 +54,9 @@
 
 <body> 
   <?php get_search_form(); ?>
+  
   <div id="headerWrap">
     <img src="<?php echo( $logoUrl ? $logoUrl : $templateURL . '/images/yklogo.png' ); ?>" id="headerLogo"></img>
   </div>
+
+  <?php require( 'templates/main-nav.php' ); ?>
