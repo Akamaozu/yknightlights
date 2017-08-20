@@ -52,11 +52,11 @@
 
 <?php flush(); ?>
 
-<body> 
-  <?php get_search_form(); ?>
+<body>
   
   <div id="headerWrap">
     <img src="<?php echo( $logoUrl ? $logoUrl : $templateURL . '/images/yklogo.png' ); ?>" id="headerLogo"></img>
+    <?php get_search_form(); ?>
   </div>
 
   <?php require( 'templates/main-nav.php' ); ?>
