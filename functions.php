@@ -719,4 +719,93 @@ add_action('widgets_init', 'widget_builder');
 		return $mimes;
 	}
 
+// render post preview row
+	function render_post_preview_row( $config = array() ){
+
+		if( ! is_array( $config ) ) return false;
+		if( ! $config['posts'] || ! is_array( $config['posts'] ) ) $config['posts'] = array();
+		if( ! $config['label'] || ! is_array( $config['label'] ) ) $config['label'] = array();
+
+		$is_minimized = $config['minimized'] ? $config['minimized'] : false;
+		?>
+
+		<div class="postPreviewRow <?php echo $is_minimized ? ' minimized' : '' ?>">
+
+		    <?php
+
+		    	if( $config['label']['image']['url'] ){
+		    		$labelImage = $config['label']['image']['url'];
+
+		    		if( $config['label']['image']['verticalPos'] == 'middle' ) $config['label']['image']['verticalPos'] = 'center';
+		    		
+		    		$labelImagePos = $config['label']['image']['verticalPos'] .' '. $config['label']['image']['hotizontalPos'];
+		    	}
+
+		    	if( $config['label']['text'] ){
+		    		$labelText = $config['label']['text'];
+		    	}
+		    ?>
+
+	      <div class="ykControlBlock left" <?php echo $labelImage ? ' style="background-image: url('. $labelImage .'); background-position: '. $labelImagePos .'"' : ''; ?> >
+	      	<?php echo $labelText ? '<span class="catTitle">'. $labelText .'</span>' : ''; ?>
+	      </div>
+
+		    <div class="postPortalsWrap center">
+
+		      <div class="portalNav leftNav"> 
+		        <a href="javascript:scrollLeft()" title="&larr; Left">&larr;</a>
+		      </div>
+
+		      <div class="portalNav rightNav"> 
+		        <a href="javascript:scrollRight()" title="Right &rarr;">&rarr;</a>
+		      </div>
+
+		      <div id="postPortals" class="center">
+
+		        <ul id="feedBlock" class="left">
+
+		          <?php
+
+		          	foreach( $config['posts'] as $post ){
+
+			            $coverPhoto = get_post_meta($post->ID, 'cover_photo', true);
+	                $category = get_the_category($post->ID); 
+	                $catName = $category['0']->cat_name;
+	                $catSlug = $category['0']->slug;
+	                ?>
+
+				          <li class="left bgFade" 
+					          style="background-image: url('<?php echo($coverPhoto['url']); ?>');
+					          background-position:
+					          <?php
+
+						          if ($coverPhoto['verticalQuickPosition'] == "middle") {
+							          echo (" center "); 
+						          } else {
+							          echo ($coverPhoto['verticalQuickPosition']." ");
+						          }
+
+						          echo $coverPhoto['horizontalQuickPosition'];
+					           ?>;"
+					        >
+										<a href="<?php echo get_the_permalink( $post ); ?>">
+										  <div class="postTitleBlock">
+										    <?php echo get_the_title( $post ); ?>
+										  </div>
+										</a>
+
+				            <div class="grow">
+				              <span class="categoryLabel center">
+				                <?php echo $catName; ?>
+				              </span>
+				            </div>
+
+				          </li>
+			          <?php } ?>
+		        </ul>
+		      </div>
+		    </div>
+		</div>
+<?php }
+
 ?>

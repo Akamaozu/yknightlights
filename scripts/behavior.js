@@ -222,7 +222,12 @@ switch (newFocus) {
 
 function scrollContentIntoView() {
 
-myPos = findPos(document.getElementById('titleBlock'));
+	var content_title = document.getElementById('titleBlock'),
+			has_content = content_title ? true : false;
+
+	if( !has_content ) return;
+
+myPos = findPos(document.getElementById('catNav'));
 yDepth = myPos[1];
 yDepth = yDepth -= 10;
 
