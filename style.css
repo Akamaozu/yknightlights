@@ -344,14 +344,15 @@ transition: all 0.25s ease-out;
 	width: auto;
 	height: auto;
 	}
-	
-	/*#feedBlock li a .postTitleBlock, #ykTimeline li a .postTitleBlock, #randomPosts li a .postTitleBlock {
-	display: none;
+
+	.minimized.postPreviewRow .postTitleBlock {
+		font-size: 1.15em;
+		margin-bottom: 0;
 	}
-	
-	#feedBlock li:hover a .postTitleBlock, #ykTimeline li:hover a .postTitleBlock, #randomPosts li:hover a .postTitleBlock {
-	display: block;
-	}*/
+
+	.minimized.postPreviewRow .categoryLabel {
+		display: none;
+	}
 	
 	#titleBlock, #contentBlock, #catNav, #socialBlock, #pageDesc, #randomPosts, .catDesc {
 	margin-left: 234px;
